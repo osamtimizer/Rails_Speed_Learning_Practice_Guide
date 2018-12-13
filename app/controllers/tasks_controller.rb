@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before:action :set_task, onlu: [:show, :edit, :update, :destroy]
+  before:action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     @tasks = current_user.tasks
   end
