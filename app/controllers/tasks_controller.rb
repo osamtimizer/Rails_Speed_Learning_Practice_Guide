@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before:action :set_task, onlu: [:show, :edit, :update, :destroy]
   def index
     @tasks = current_user.tasks
   end
@@ -43,4 +44,7 @@ class TasksController < ApplicationController
       params.require(:task).permit(:name, :description)
     end
 
+    def set_task
+      @task = current_user.tasks.find(params[:id])
+    end
 end
